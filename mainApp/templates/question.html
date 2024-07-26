@@ -1,0 +1,132 @@
+{% extends 'index.html'%} {% block title %} OTS|QUESTION Paper {% endblock %} 
+{% block style %}
+<style>
+  * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+  body {
+   
+   
+    background-color: rgba(0, 0, 0, 0.707);
+    color: #fff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+  }
+  h1 {
+    width: 100vw;
+    color: #fff;
+    font-size: 40px;
+    background-color: blueviolet;
+ 
+    padding: 1vh 0px;
+  }
+  .h1{
+    text-align: center;
+  }
+  form {
+    width: 50vw;
+    
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  h3{
+    margin: 10px 0px;
+    color: #fff;
+  }
+  label {
+    margin: 5px 3px;
+    font-size: 20px;
+    color: #fff;
+  }
+  input {
+    margin: 5px 0px;
+    height: 18px;
+    width: 18px;
+  }
+  .info_box {
+    padding: 2vw;
+    border: 1px solid #fff;
+    width: 100%;
+    margin: 20px;
+  }
+.input_label{
+  display: flex;
+  align-items: center;
+    
+}
+  button {
+    font-size: 25px;
+    color: #fff;
+    margin: 5vh 0px;
+    border-radius: 5px;
+    border: none;
+    height: 5vh;
+    width: 15vw;
+    background-color: blueviolet;
+  }
+</style>
+{% endblock %} 
+
+{% block body %}
+<div class="h1"><h1>Question</h1></div>
+
+
+<form action="{% url 'result' subject.id %}" method="post">
+  {% csrf_token %} {% for item in questions %}
+
+  <input type="hidden" name="question_id" value="{{item.id}}" />
+  <div class="info_box">
+    <h3><span>{{ forloop.counter }}</span> {{item.question}}</h3>
+
+    <div class="input_label">
+      <input
+        type="radio"
+        required
+        name="option{{ item.id }}"
+        value="{{item.opt1}}"
+      /><label for="">{{item.opt1}}</label>
+    </div>
+    <div class="input_label">
+      <input
+        type="radio"
+        required
+        name="option{{ item.id }}"
+        value="{{item.opt2}}"
+      /><label for="">{{item.opt2}}</label>
+    </div>
+    <div class="input_label">
+      <input
+        type="radio"
+        required
+        name="option{{ item.id }}"
+        value="{{item.opt3}}"
+      /><label for="">{{item.opt3}}</label>
+    </div>
+    <div class="input_label">
+      <input
+        type="radio"
+        required
+        name="option{{ item.id }}"
+        value="{{item.opt4}}"
+      /><label for="">{{item.opt4}}</label>
+    </div>
+  </div>
+  {% endfor %}
+
+  <button type="submit">submit test</button>
+</form>
+
+<!-- <input type="radio" name="option{{ forloop.counter }}" value="{{item.opt1}}"><label for="">{{item.opt1}}</label>
+        <br>
+        <input type="radio" name="option{{ forloop.counter }}" value="{{item.opt2}}"><label for="">{{item.opt2}}</label>
+        <br>
+        <input type="radio" name="option{{ forloop.counter }}" value="{{item.opt3}}"><label for="">{{item.opt3}}</label>
+        <br>
+        <input type="radio" name="option{{ forloop.counter }}" value="{{item.opt4}}"><label for="">{{item.opt4}}</label>
+        <br> -->
+{% endblock %}

@@ -1,0 +1,94 @@
+{% extends 'super.html' %}
+{% load static %}
+{% block title %}
+OTS | Signup
+{% endblock %}
+
+
+{% block style %} <style>
+    *{
+        margin: 0;padding: 0;box-sizing: border-box;
+    }
+    body{
+        padding: 20vh 10vw;
+        text-align:center ;
+        background-color: rgba(0, 0, 0, 0.707);
+        color: #fff;
+    }
+  h1 {
+    color: #fff;
+    font-size: 40px;
+    background-color: blueviolet;
+    padding: 2vh 0px;
+   
+  } 
+  form{
+    width: fit-content;
+    margin: 10vh auto;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  label{
+    font-size: 25px;
+    text-decoration: none;
+    color: rgba(255, 255, 255, 0.89);
+    /* background-color: rgba(137, 43, 226, 0.89); */
+    padding: 1vh 0px;
+    margin: 1vh 0px;
+  }
+  input{
+    border-radius: 5px;
+    height: 5vh;
+    width: 15vw;
+}
+button{
+    font-size: 25px;
+    color: #fff;
+    margin: 5vh 0px;
+      border-radius: 5px;
+    border: none;
+    height: 5vh;
+    width:15vw ;
+    background-color: blueviolet;
+  }
+</style> {% endblock %}
+
+
+
+{% block body %}
+<h1 class="text"> welcome to Signup page </h1>
+<form action="" method="post">
+    {% csrf_token %}
+    <label for=""> Full name: </label>
+    <input type="text" required name="name" >
+
+    <label for=""> year: </label>
+    <input type="text" required name="year" >
+
+    <label for=""> Semster: </label>
+    <input type="text" required name="sem" >
+
+
+    <label for=""> Username: </label>
+    <input type="text" required name="username" >
+
+    <label for="">Email: </label>
+    <input type="email" required name="email" >
+    
+    <label for=""> Password: </label>
+    <input type="password" required name="password" >
+
+    <label for=""> Confirm Password : </label>
+    <input type="password" required name="cpassword" >
+    <button type="submit">Submit</button>
+</form>
+
+
+{% if messages %}
+{% for m in messages %}
+<div>{{m}} </div>
+{% endfor %}
+{% endif %}
+
+{% endblock %}

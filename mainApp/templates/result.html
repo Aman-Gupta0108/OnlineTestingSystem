@@ -1,0 +1,87 @@
+{% extends 'super.html'%}
+
+{% block label %}
+OTS|Result
+{% endblock %}
+
+{% block style %}
+<style>
+  * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    line-height: 40px;
+  }
+  body {   
+    background-color: rgba(0, 0, 0, 0.707);
+    color: #fff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+  }
+  h1 {
+    width: 100vw;
+    color: #fff;
+    font-size: 40px;
+    background-color: blueviolet;
+    padding: 1vh 0px;
+}
+.h1{
+    text-align: center;
+  }
+  
+ p {
+font-size: 25px;
+font-weight: 800;
+letter-spacing: 1px;
+color: #fff;
+}
+span {
+    font-size: 25px;
+    font-weight: 600;
+    letter-spacing: 1px;
+ }
+  .info_box {
+    padding: 2vw;
+    border: 1px solid #fff;
+    border-radius: 5px;
+    width: 80%;
+    margin: 50px;
+  }
+
+  a {
+    font-size: 25px;
+    color: #fff;
+    margin: 5vh 30px;
+    border-radius: 5px;
+    padding: 5px 10px;
+    /* border: none; */
+   text-decoration: none;
+    background-color: blueviolet;
+  }
+</style>
+{% endblock %}
+
+{% block body %}
+<div class="h1">
+<h1>Result</h1>
+</div>
+<div class="info_box" >
+<p>Student RollNo: <span>{{student.id}}</span></p>
+<p>Username: <span>{{result.username.username}}</span></p>
+<p>Subject: <span>{{result.examname.examname}}</span></p>
+<p>Right Answer: <span>{{result.right}}</span></p>
+<p>Worng Answer: <span>{{result.wrong}}</span></p>
+
+<p>Total point: <span>{{result.point}}</span></p>
+<p>Date: <span>{{result.date}}</span></p>
+
+
+</div>
+<div class="a_section">
+<a href="{% url 'examsubject'%}">Attempt Another Exam</a>
+<a href="{% url 'logout'%}">Log Out</a>
+
+</div>
+{% endblock %}
