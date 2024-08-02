@@ -30,7 +30,7 @@ class Student(models.Model):
     id= models.AutoField(primary_key=True)
     name=models.CharField(max_length=50)
     username=models.CharField(max_length=50,unique=True)
-    email=models.EmailField(max_length=20,unique=True)
+    email=models.EmailField(max_length=20)
     sem = models.CharField(max_length=20)
     year= models.CharField(max_length=20)
     points=models.FloatField(null=True)

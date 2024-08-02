@@ -13,7 +13,9 @@ urlpatterns = [
     path('paper/<int:id>/',views.questionpaper),
     
     path('result/<int:id>/',views.resultpage,name='result'),
+    path('updateprofile/<int:id>/',views.updateProfilePage,name='updateProfile'),
 ]
+
 
 
 

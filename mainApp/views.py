@@ -19,19 +19,19 @@ def homepage(Request):
     return HttpResponse(template.render())
 # @login_required(login_url='login/')
 
-@login_required(login_url='/ots/login/')
+@login_required(login_url='/login/')
 def studentprofile(Request):
     #  for gatting user from data base 
     student = Student.objects.get(username=Request.user.username)
     return render(Request,'studentprofile.html',{"student":student})
 
-@login_required(login_url='/ots/login/')
+@login_required(login_url='/login/')
 def examSubject(Request):
     subject= ExamPaper.objects.all()
 
     return render(Request,'examsubject.html',{"subject":subject})
 
-@login_required(login_url='/ots/login/')
+@login_required(login_url='/login/')
 def questionpaper(Request,id):
     subject = ExamPaper.objects.get(id=id)
     questions = Questionpaper.objects.filter(nameofexam=subject)
@@ -40,7 +40,7 @@ def questionpaper(Request,id):
 
    
 
-@login_required(login_url='/ots/login/')
+@login_required(login_url='/login/')
 def resultpage(Request,id):
     subject=ExamPaper.objects.get(id=id)
     subjectname=ExamPaper.objects.get(examname = subject.examname)
@@ -85,7 +85,7 @@ def signuppage(Request):
                 s.sem=Request.POST.get("sem")
                 s.year=Request.POST.get("year")
                 s.save()
-                return HttpResponseRedirect('/ots/login/')
+                return HttpResponseRedirect('/login/')
                 
             except:
                 error(Request,"UserName Already Taken !!!")
@@ -112,14 +112,32 @@ def loginpage(Request):
             else:
                 # pass
                 # print()
-                return HttpResponseRedirect('/ots/studentprofile/')
+                return HttpResponseRedirect('/studentprofile/')
         else:
             error(Request,"Invalide Username or password !!!")
     return render(Request,"loginpage.html")
 
+@login_required(login_url='/login/')
+def updateProfilePage(Request,id):
+    student = Student.objects.get(id=id)
+    if(Request.method == "POST"):
+       
 
-@login_required(login_url='/ots/login/')
+        email = Request.POST.get("email")
+        name = Request.POST.get("name")
+        User.objects.update(email=email,first_name=name)
+        
+        student.email=email
+        student.name=name
+        student.sem=Request.POST.get("sem")
+        student.year=Request.POST.get("year")
+        student.save()
+        return HttpResponseRedirect("/studentprofile/")
+    return render(Request,"updatepage.html",{"student":student})
+
+
+@login_required(login_url='/login/')
 def logoutpage(Request):
     logout(Request)
-    return HttpResponseRedirect('/ots/')
+    return HttpResponseRedirect('/')
     #   logout(request)

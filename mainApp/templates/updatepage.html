@@ -8,7 +8,7 @@ OTS | Signup
 
 <div class="row bg-dark my-5">
   <div class="col-12 text-light text-center">
-    <h1 > Welcome to Signup Page </h1>
+    <h1 > Update Your Profile </h1>
 
   </div>
 </div>
@@ -20,40 +20,29 @@ OTS | Signup
 
     <div class="col-md-6">
       <label for="" class="form-label">Full Name</label>
-      <input type="text" class="form-control"  required name="name">
+      <input type="text" class="form-control" value="{{student.name}}" required name="name">
     </div>
     
-    <div class="col-md-6">
-      <label for="inputEmail4" class="form-label">Username</label>
-      <input type="text" required name="username" class="form-control" >
-    </div>
+    
 
     <div class="col-md-6">
       <label for="inputEmail4" class="form-label">Email</label>
-      <input type="email" required name="email" class="form-control" id="inputEmail4">
+      <input type="email" required name="email" value="{{student.email}}" class="form-control" id="inputEmail4">
     </div>
     
     
-    <div class="col-md-3">
+    <div class="col-md-6">
       <label for="inputState" class="form-label">Collage Year</label>
-      <input type="text" required name="year"  class="form-control" id="inputCity">
+      <input type="text" required name="year" value="{{student.year}}" class="form-control" id="inputCity">
       
     </div>
 
 
-    <div class="col-md-3">
+    <div class="col-md-6">
       <label for="inputZip" class="form-label">Semster</label>
-      <input type="text" required name="sem" class="form-control" id="inputZip">
+      <input type="text" required name="sem" value="{{student.sem}}" class="form-control" id="inputZip">
     </div>
 
-    <div class="col-md-6">
-      <label for="" class="form-label">Password</label>
-      <input type="password" required name="password" class="form-control"  >
-    </div>
-    <div class="col-md-6">
-      <label for="" class="form-label">Confirm Password</label>
-      <input type="password" required name="cpassword" class="form-control"  >
-    </div>
    
 {% if messages %}
 {% for m in messages %}
@@ -66,7 +55,7 @@ OTS | Signup
     
     
     <div class="col-12 text-center">
-      <button type="submit" class="btn btn-dark w-50 fs-4">Sign in</button>
+      <button type="submit" class="btn btn-dark w-50 fs-4 my-5">update</button>
     </div>
   </form>
 </div>

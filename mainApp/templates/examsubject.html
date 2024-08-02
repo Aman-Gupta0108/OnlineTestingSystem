@@ -2,68 +2,21 @@
 {% block title %}
 OTS|Subject
 {% endblock %}
-{% block style %} <style>
-    *{
-        margin: 0;padding: 0;box-sizing: border-box;
-    }
-    body{
-        /* padding: 20vh 8vw; */
-        /* text-align:center ; */
-        background-color: rgba(0, 0, 0, 0.707);
-        color: #fff;
-        display: flex;
-        align-items: center;
-     justify-content: center;
-     flex-direction: column;
-     line-height: 25px;
-        
-    }
-
-  
- .info_box{
-    font-size: 20px;
-    word-wrap: break-word;
-    width: 70vw;
-   border: 2px solid rgb(255, 255, 255);
-   border-radius: 5px;
-   margin: 5vh 0px;
-   padding: 1%;
- }
- 
-p{
-    margin: 10px 0px;
-    color: #fff;
-    font-size: 20px;
-}
-
-a{
-    text-decoration: none;
-    font-size: 25px;
-    color: #fff;
-  margin: 10px 0px;
-    border-radius: 5px;
-    
-    padding: 1vh 3vw;
-
-    background-color: blueviolet;
-  }
-</style> {% endblock %}
+{% block style %} 
+ {% endblock %}
 {% block body %}
 
 {% for sub in subject %}
 
-<div class="info_box">
-<p>Sr.no: <span>{{sub.id}}</span></p>
-<p>Subject Name: <span>{{sub.examname}}</span></p>
-<p>About Subject: <span>{{sub.examdisp}}</span></p>
-<p>Number of Question: <span>{{sub.numofquestion}}</span></p>
-<br>
-<a href="/ots/paper/{{sub.id}}/"> Start Exam</a>
+<div class="card m-5 bg-secondary">
+  <h5 class="card-header text-light bg-dark fs-4">Sr.no: <span>{{sub.id}}</span></h5>
+  <div class="card-body">
+    <h5 class="card-title text-light fs-5">Subject Name: <span>{{sub.examname}}</span></h5>
+    <p class="card-text text-light fs-5">About Subject: <span>{{sub.examdisp}}</span></p>
+    <p class="card-text text-light fs-5">Number of Question: <span>{{sub.numofquestion}}</span></p>
+    <a href="/paper/{{sub.id}}/" class="btn btn-dark px-5 fs-4"> Start Exam</a>
+  </div>
 </div>
-
-<!-- <a href="/ots/paper/{{sub.examname}}/"> start exam</a> -->
-
-
 
 {% endfor %}
 

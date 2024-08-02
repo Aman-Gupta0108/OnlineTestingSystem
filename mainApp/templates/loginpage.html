@@ -3,73 +3,46 @@
 {% block title %}
 OTS | Login
 {% endblock %}
-{% block style %} <style>
-    *{
-        margin: 0;padding: 0;box-sizing: border-box;
-    }
-    body{
-        padding: 20vh 10vw;
-        text-align:center ;
-        background-color: rgba(0, 0, 0, 0.707);
-        color: #fff;
-    }
-  h1 {
-    color: #fff;
-    font-size: 40px;
-    background-color: blueviolet;
-    padding: 2vh 0px;
-   
-  } 
-  form{
-    width: fit-content;
-    margin: 10vh auto;
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-  }
-  label{
-    font-size: 25px;
-    text-decoration: none;
-    color: rgba(255, 255, 255, 0.89);
-    /* background-color: rgba(137, 43, 226, 0.89); */
-    padding: 1vh 0px;
-    margin: 1vh 0px;
-  }
-  input{
-    border-radius: 5px;
-    height: 5vh;
-    width: 15vw;
-}
-.message{
-    font-size:30px ;
-    font-weight: 800;
-    color: red;
-}
-button{
-    font-size: 30px;
-    color: #fff;
-    margin: 5vh 0px;
-      border-radius: 5px;
-    border: none;
-    height: 5vh;
-    width:15vw ;
-    background-color: blueviolet;
-  }
-</style> {% endblock %}
-{% block body %}
-<h1 class="text"> welcome to Login page  </h1>
-<form action="" method="post">
-    {% csrf_token %}
-    <label for="">Username</label>
-    <input type="text" required name="username" >
 
-    <label for="">Password</label>
-    <input type="password" required name="password">
-    <button type="submit">Login</button>
-</form>
+{% block body %}
+<div class="row bg-dark text-center mt-5">
+  <div class="col-12">
+    <h1 class="text-light "> welcome to Login page  </h1>
+
+  </div>
+</div>
+
+<div class="container-fluid d-flex justify-content-center  my-5">
+  
+  <form action="" method="post">
+      {% csrf_token %}
+      <div class="mb-3">
+        <label for="exampleInputEmail1" class="form-label">Username</label>
+        <input type="text" class="form-control" required name="username" id="exampleInputEmail1" >
+        <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div>
+      </div>
+      <div class="mb-3">
+        <label for="exampleInputPassword1" class="form-label">Password</label>
+        <input type="password" class="form-control" required name="password" id="exampleInputPassword1">
+      </div>
+      
 {% if messages %}
 {% for m in messages %}
-<div class="message" >{{m}} </div>
+<div class="text-danger m-2" >{{m}} </div>
 {% endfor %}
 {% endif %}
+
+      <button type="submit" class="btn btn-dark w-100 ">Submit</button>
+    </form>
+
+
+
+
+
+    <!-- <label for="">Password</label>
+    <input type="password" required name="password">
+    <button type="submit">Login</button>
+</form> -->
+
+</div>
 {% endblock %}

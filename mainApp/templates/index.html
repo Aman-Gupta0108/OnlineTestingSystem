@@ -5,41 +5,28 @@
 {% block title %}
 OTS | Home
 {% endblock %}
-{% block style %} <style>
-    *{
-        margin: 0;padding: 0;box-sizing: border-box;
-    }
-    body{
-        padding: 20vh 10vw;
-        text-align:center ;
-        background-color: rgba(0, 0, 0, 0.707);
-        color: #fff;
-    }
-  h1 {
-    color:#fff;
-    font-size: 40px;
-    background-color: blueviolet;
-    padding: 2vh 0px;
-   
-  } 
-  .div_button{
-    margin: 10vh auto;
-  }
-  a{
-    font-size: 25px;
-    text-decoration: none;
-    color: #fff;
-    background-color: rgba(137, 43, 226, 0.89);
-    padding: 1vh 1vw;
-    margin: 1vh 2vw;
-  }
-</style> {% endblock %}
+
 {% block body %}
-<h1 > Welcome to Our Online Testing System App </h1>
-<div class="div_button">
-    <a href="{%url 'login' %}">Login</a>
-    <a href="{%url 'signup' %}">signup</a>
+
+
+<div class="row bg-dark mt-5">
+    <div class="col-12 text-light text-center">
+        <h1 class="  fs-1"> Welcome to Our Online Testing System App </h1>
+    </div>
 </div>
+    
+  
+  
+<div class=".container-fluid text-center mt-5 ">
+  
+ 
+    <a href="{%url 'login' %}" class="btn btn-dark  fs-4 ">Login</a>
+    <a href="{%url 'signup' %}" class="btn btn-dark fs-4 mx-5 ">signup</a>
+
+  
+  
+</div>
+
 
 
 
